@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TemplateStay — Template Premium per Locazioni Turistiche</title>
+<meta name="description" content="Template HTML professionali per appartamenti turistici, B&B, hotel e case vacanza. Design italiano, pronti all'uso, da €149.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#FCFBF8;--bg2:#F5F3EE;--bg3:#EEEAE3;
+  --card:#FFFFFF;--dark:#111110;--text:#181814;--text2:#5A574E;--text3:#9E9A90;--text4:#C4C0B6;
+  --accent:#D15A36;--accent2:#B34828;--accentL:rgba(209,90,54,.06);
+  --green:#2D8B55;--greenL:rgba(45,139,85,.08);
+  --border:#E4E0D8;--borderL:#F0ECE5;
+  --serif:'Instrument Serif',Georgia,serif;
+  --sans:'Instrument Sans',system-ui,sans-serif;
+  --mono:'IBM Plex Mono',monospace;
+  --shadow-s:0 1px 2px rgba(17,17,16,.04);
+  --shadow-m:0 4px 16px rgba(17,17,16,.06);
+  --shadow-l:0 16px 48px rgba(17,17,16,.08);
+  --shadow-xl:0 24px 64px rgba(17,17,16,.12);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--accent);color:#fff}
+img{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+
+/* ══════ NAV ══════ */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 3rem;display:flex;justify-content:space-between;align-items:center;background:rgba(252,251,248,.9);backdrop-filter:blur(20px);border-bottom:1px solid var(--borderL);transition:all .4s}
+.nav-logo{display:flex;align-items:center;gap:.5rem;font-size:1.05rem;font-weight:700;letter-spacing:-.02em}
+.nav-logo-icon{width:28px;height:28px;background:var(--dark);border-radius:6px;display:flex;align-items:center;justify-content:center}
+.nav-logo-icon svg{width:16px;height:16px;stroke:#fff;stroke-width:2;fill:none}
+.nav-center{display:flex;gap:2rem}
+.nav-center a{font-size:.8rem;font-weight:500;color:var(--text2);transition:color .3s}
+.nav-center a:hover{color:var(--text)}
+.nav-right{display:flex;gap:.8rem;align-items:center}
+.nav-contact{font-size:.75rem;font-weight:500;color:var(--text2);padding:.5rem 1rem;border:1px solid var(--border);border-radius:6px;transition:all .3s}
+.nav-contact:hover{border-color:var(--text);color:var(--text)}
+.nav-wa{font-size:.75rem;font-weight:600;color:#fff;background:var(--dark);padding:.5rem 1.2rem;border-radius:6px;display:flex;align-items:center;gap:.4rem;transition:all .3s}
+.nav-wa:hover{background:var(--accent)}
+.nav-wa svg{width:14px;height:14px;stroke:currentColor;stroke-width:1.5;fill:none}
+.nav-toggle{display:none;flex-direction:column;gap:4px;cursor:pointer}
+.nav-toggle span{width:20px;height:1.5px;background:var(--text)}
+@media(max-width:768px){
+  nav{padding:.8rem 1.2rem}
+  .nav-center{display:none}
+  .nav-toggle{display:flex}
+  .nav-right .nav-contact{display:none}
+  .mob-menu{position:fixed;inset:0;background:var(--bg);z-index:99;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:2rem;opacity:0;visibility:hidden;transition:all .3s}
+  .mob-menu.open{opacity:1;visibility:visible}
+  .mob-menu a{font-size:1.2rem;font-weight:500;color:var(--text)}
+}
+
+/* ══════ HERO ══════ */
+.hero{padding:7rem 3rem 3rem;max-width:1200px;margin:0 auto;text-align:center}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:var(--greenL);border:1px solid rgba(45,139,85,.15);padding:.35rem 1rem;border-radius:100px;font-size:.7rem;font-weight:600;color:var(--green);margin-bottom:1.5rem;opacity:0;animation:fadeUp .7s ease .1s forwards}
+.hero-badge::before{content:'';width:6px;height:6px;background:var(--green);border-radius:50%}
+.hero h1{font-family:var(--serif);font-size:clamp(2.5rem,5.5vw,4.5rem);font-weight:400;line-height:1.1;letter-spacing:-.02em;margin-bottom:1.2rem;opacity:0;animation:fadeUp .7s ease .2s forwards}
+.hero h1 em{font-style:italic}
+.hero-sub{font-size:1.05rem;color:var(--text2);max-width:540px;margin:0 auto 2.5rem;line-height:1.7;font-weight:400;opacity:0;animation:fadeUp .7s ease .3s forwards}
+.hero-actions{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;opacity:0;animation:fadeUp .7s ease .4s forwards}
+.btn-primary{background:var(--dark);color:#fff;padding:.8rem 2rem;border-radius:8px;font-size:.8rem;font-weight:600;transition:all .3s;display:inline-flex;align-items:center;gap:.5rem}
+.btn-primary:hover{background:var(--accent);transform:translateY(-1px);box-shadow:var(--shadow-m)}
+.btn-primary svg{width:16px;height:16px;stroke:currentColor;stroke-width:1.5;fill:none}
+.btn-secondary{background:var(--card);color:var(--text);padding:.8rem 2rem;border-radius:8px;font-size:.8rem;font-weight:600;border:1px solid var(--border);transition:all .3s;display:inline-flex;align-items:center;gap:.5rem}
+.btn-secondary:hover{border-color:var(--text);transform:translateY(-1px)}
+.btn-secondary svg{width:16px;height:16px;stroke:currentColor;stroke-width:1.5;fill:none}
+.hero-proof{margin-top:2.5rem;display:flex;align-items:center;justify-content:center;gap:2rem;opacity:0;animation:fadeUp .7s ease .5s forwards}
+.hero-proof-item{font-size:.72rem;color:var(--text3);display:flex;align-items:center;gap:.4rem}
+.hero-proof-item svg{width:14px;height:14px;stroke:var(--accent);stroke-width:1.5;fill:none}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+
+@media(max-width:768px){
+  .hero{padding:6rem 1.5rem 3rem}
+  .hero-proof{flex-direction:column;gap:.8rem}
+}
+
+/* ══════ TEMPLATES GRID ══════ */
+.templates{padding:1rem 3rem 4rem;max-width:1200px;margin:0 auto}
+.templates-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:2rem}
+.templates-header h2{font-family:var(--serif);font-size:clamp(1.6rem,2.5vw,2.2rem);font-weight:400}
+.templates-header h2 em{font-style:italic}
+.templates-count{font-family:var(--mono);font-size:.7rem;color:var(--text3);letter-spacing:.08em}
+.tpl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:1.5rem}
+
+/* Template Card */
+.tpl-card{background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;transition:all .5s cubic-bezier(.16,1,.3,1);position:relative}
+.tpl-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-xl);border-color:transparent}
+.tpl-thumb{aspect-ratio:16/10;overflow:hidden;position:relative;background:var(--bg2)}
+.tpl-thumb img{width:100%;height:100%;object-fit:cover;transition:transform 1s cubic-bezier(.16,1,.3,1)}
+.tpl-card:hover .tpl-thumb img{transform:scale(1.04)}
+/* Gradient placeholder for thumbnails */
+.tpl-thumb-placeholder{width:100%;height:100%;position:absolute;inset:0}
+.tpl-badge{position:absolute;top:.8rem;left:.8rem;display:flex;gap:.4rem}
+.tpl-badge span{padding:.25rem .65rem;border-radius:5px;font-size:.6rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;backdrop-filter:blur(8px)}
+.badge-new{background:rgba(45,139,85,.9);color:#fff}
+.badge-popular{background:rgba(209,90,54,.9);color:#fff}
+.badge-soon{background:rgba(17,17,16,.7);color:#fff}
+.tpl-preview-btn{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(17,17,16,.4);opacity:0;transition:opacity .4s;backdrop-filter:blur(2px)}
+.tpl-card:hover .tpl-preview-btn{opacity:1}
+.tpl-preview-btn span{background:#fff;color:var(--dark);padding:.6rem 1.4rem;border-radius:6px;font-size:.72rem;font-weight:600;display:flex;align-items:center;gap:.4rem;transition:transform .3s}
+.tpl-preview-btn span:hover{transform:scale(1.04)}
+.tpl-preview-btn svg{width:14px;height:14px;stroke:currentColor;stroke-width:2;fill:none}
+.tpl-info{padding:1.2rem 1.4rem}
+.tpl-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:.6rem}
+.tpl-type{font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text3)}
+.tpl-rating{font-size:.65rem;color:var(--text2);display:flex;align-items:center;gap:.25rem}
+.tpl-rating svg{width:12px;height:12px;fill:var(--accent);stroke:none}
+.tpl-name{font-family:var(--serif);font-size:1.25rem;font-weight:400;margin-bottom:.3rem}
+.tpl-desc{font-size:.78rem;color:var(--text3);line-height:1.5;margin-bottom:1rem}
+.tpl-footer{display:flex;align-items:center;justify-content:space-between;padding-top:.8rem;border-top:1px solid var(--borderL)}
+.tpl-price{display:flex;align-items:baseline;gap:.3rem}
+.tpl-price-amount{font-family:var(--serif);font-size:1.4rem;font-weight:400}
+.tpl-price-detail{font-size:.65rem;color:var(--text3)}
+.tpl-buy{background:var(--dark);color:#fff;border:none;padding:.55rem 1.2rem;border-radius:6px;font-family:var(--sans);font-size:.7rem;font-weight:600;cursor:pointer;transition:all .3s;display:flex;align-items:center;gap:.35rem}
+.tpl-buy:hover{background:var(--accent)}
+.tpl-buy svg{width:13px;height:13px;stroke:currentColor;stroke-width:1.5;fill:none}
+
+/* Coming soon card */
+.tpl-card.soon{opacity:.7}
+.tpl-card.soon .tpl-thumb{filter:grayscale(.5)}
+.tpl-card.soon .tpl-buy{background:var(--bg2);color:var(--text3);cursor:default;border:1px solid var(--border)}
+.tpl-card.soon .tpl-buy:hover{background:var(--bg2)}
+
+@media(max-width:768px){
+  .templates{padding:1.5rem 1.2rem 3rem}
+  .tpl-grid{grid-template-columns:1fr}
+  .templates-header{flex-direction:column;align-items:flex-start;gap:.5rem}
+}
+
+/* ══════ HOW IT WORKS ══════ */
+.how{padding:3rem 3rem 4rem;max-width:1200px;margin:0 auto}
+.how h2{font-family:var(--serif);font-size:clamp(1.6rem,2.5vw,2.2rem);font-weight:400;text-align:center;margin-bottom:.6rem}
+.how h2 em{font-style:italic}
+.how-sub{text-align:center;font-size:.88rem;color:var(--text3);margin-bottom:3rem}
+.how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.how-step{padding:2.5rem;border-right:1px solid var(--border);position:relative}
+.how-step:last-child{border-right:none}
+.how-num{font-family:var(--serif);font-size:2.5rem;color:var(--borderL);font-weight:400;line-height:1;margin-bottom:1rem}
+.how-step h3{font-size:.95rem;font-weight:700;margin-bottom:.5rem}
+.how-step p{font-size:.8rem;color:var(--text3);line-height:1.65}
+.how-icon{position:absolute;top:2rem;right:2rem}
+.how-icon svg{width:22px;height:22px;stroke:var(--accent);stroke-width:1.5;fill:none}
+@media(max-width:768px){
+  .how{padding:3rem 1.2rem}
+  .how-grid{grid-template-columns:1fr}
+  .how-step{border-right:none;border-bottom:1px solid var(--border)}
+  .how-step:last-child{border-bottom:none}
+}
+
+/* ══════ FEATURES ══════ */
+.features{padding:0 3rem 3rem;max-width:1200px;margin:0 auto}
+.feat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.feat-card{padding:1.8rem;border:1px solid var(--border);border-radius:10px;background:var(--card);transition:all .3s}
+.feat-card:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:var(--shadow-m)}
+.feat-card svg{width:24px;height:24px;stroke:var(--accent);stroke-width:1.5;fill:none;margin-bottom:1rem}
+.feat-card h3{font-size:.88rem;font-weight:700;margin-bottom:.3rem}
+.feat-card p{font-size:.75rem;color:var(--text3);line-height:1.6}
+@media(max-width:768px){
+  .features{padding:0 1.2rem 3rem}
+  .feat-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:480px){.feat-grid{grid-template-columns:1fr}}
+
+/* ══════ FAQ ══════ */
+.faq{padding:3rem 3rem;max-width:800px;margin:0 auto}
+.faq h2{font-family:var(--serif);font-size:clamp(1.6rem,2.5vw,2.2rem);font-weight:400;text-align:center;margin-bottom:2.5rem}
+.faq h2 em{font-style:italic}
+.faq-item{border-bottom:1px solid var(--border);overflow:hidden}
+.faq-q{padding:1.2rem 0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-size:.9rem;font-weight:600;transition:color .3s}
+.faq-q:hover{color:var(--accent)}
+.faq-q svg{width:18px;height:18px;stroke:var(--text3);stroke-width:1.5;fill:none;transition:transform .3s;flex-shrink:0}
+.faq-q.open svg{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .4s ease}
+.faq-a.open{max-height:200px;padding-bottom:1.2rem}
+.faq-a p{font-size:.82rem;color:var(--text2);line-height:1.7}
+@media(max-width:768px){.faq{padding:3rem 1.2rem}}
+
+/* ══════ CTA ══════ */
+.bottom-cta{padding:3rem 3rem;max-width:1200px;margin:0 auto}
+.cta-box{background:var(--dark);border-radius:14px;padding:3.5rem;text-align:center;position:relative;overflow:hidden}
+.cta-box::before{content:'';position:absolute;width:300px;height:300px;border-radius:50%;background:rgba(209,90,54,.1);top:-100px;right:-80px}
+.cta-box::after{content:'';position:absolute;width:200px;height:200px;border-radius:50%;background:rgba(209,90,54,.06);bottom:-60px;left:-40px}
+.cta-box h2{font-family:var(--serif);font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:400;color:#fff;margin-bottom:.8rem;position:relative}
+.cta-box h2 em{font-style:italic}
+.cta-box p{font-size:.9rem;color:rgba(255,255,255,.5);max-width:440px;margin:0 auto 2rem;line-height:1.7;position:relative}
+.cta-box .cta-btns{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;position:relative}
+.cta-btn-w{background:#fff;color:var(--dark);padding:.8rem 2rem;border-radius:8px;font-size:.8rem;font-weight:600;transition:all .3s;display:inline-flex;align-items:center;gap:.5rem}
+.cta-btn-w:hover{transform:translateY(-2px);box-shadow:var(--shadow-l)}
+.cta-btn-w svg{width:16px;height:16px;stroke:currentColor;stroke-width:1.5;fill:none}
+.cta-btn-o{background:transparent;color:#fff;padding:.8rem 2rem;border-radius:8px;font-size:.8rem;font-weight:600;border:1px solid rgba(255,255,255,.2);transition:all .3s;display:inline-flex;align-items:center;gap:.5rem}
+.cta-btn-o:hover{border-color:#fff;transform:translateY(-2px)}
+.cta-btn-o svg{width:16px;height:16px;stroke:currentColor;stroke-width:1.5;fill:none}
+@media(max-width:768px){
+  .bottom-cta{padding:3rem 1.2rem}
+  .cta-box{padding:3rem 1.5rem;border-radius:10px}
+}
+
+/* ══════ FOOTER ══════ */
+footer{padding:2rem 3rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;max-width:1200px;margin:0 auto}
+.ft-l{font-size:.7rem;color:var(--text3)}
+.ft-l strong{color:var(--text);font-weight:600}
+.ft-r{display:flex;gap:1.2rem}
+.ft-r a{font-size:.7rem;color:var(--text3);transition:color .3s}
+.ft-r a:hover{color:var(--accent)}
+@media(max-width:768px){footer{padding:1.5rem 1.2rem;flex-direction:column;text-align:center}}
+
+/* ══════ REVEALS ══════ */
+.r{opacity:1;transform:translateY(0);transition:opacity .6s ease,transform .6s ease}
+@media(min-width:1px){
+  .r{opacity:0;transform:translateY(20px)}
+  .r.v{opacity:1;transform:translateY(0)}
+}
+.rd1{transition-delay:.1s}.rd2{transition-delay:.2s}.rd3{transition-delay:.3s}.rd4{transition-delay:.4s}
+
+/* Fallback: show everything after 2s even if JS fails */
+@keyframes forceShow{to{opacity:1;transform:translateY(0)}}
+.r{animation:forceShow 0s ease 2.5s forwards}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+    TemplateStay
+  </a>
+  <div class="nav-center">
+    <a href="#templates">Template</a>
+    <a href="#how">Come funziona</a>
+    <a href="#faq">FAQ</a>
+  </div>
+  <div class="nav-right">
+    <a href="/cdn-cgi/l/email-protection#9cfdf8eef5fdf2eaf9f9f3fafaf5fff5fdf0dcfbf1fdf5f0b2fff3f1" class="nav-contact">Contattaci</a>
+    <a href="https://wa.me/393928066329" class="nav-wa"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>WhatsApp</a>
+  </div>
+  <div class="nav-toggle" id="navToggle"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mob-menu" id="mobMenu">
+  <a href="#templates">Template</a>
+  <a href="#how">Come funziona</a>
+  <a href="#faq">FAQ</a>
+  <a href="https://wa.me/393928066329">WhatsApp</a>
+  <a href="/cdn-cgi/l/email-protection#91f0f5e3f8f0ffe7f4f4fef7f7f8f2f8f0fdd1f6fcf0f8fdbff2fefc">Email</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">Nuova piattaforma — Lancio 2026</div>
+  <h1>Template <em>premium</em> per la tua locazione turistica</h1>
+  <p class="hero-sub">Siti web professionali per appartamenti, B&B, hotel e case vacanza. Design italiano, pronti all'uso, con sincronizzazione calendario OTA integrata.</p>
+  <div class="hero-actions">
+    <a href="#templates" class="btn-primary"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>Esplora i template</a>
+    <a href="https://wa.me/393928066329" class="btn-secondary"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Parla con noi</a>
+  </div>
+  <div class="hero-proof">
+    <div class="hero-proof-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Installazione inclusa</div>
+    <div class="hero-proof-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Sync Booking · Airbnb · VRBO</div>
+    <div class="hero-proof-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>100% personalizzabile</div>
+    <div class="hero-proof-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Pagamento sicuro Stripe</div>
+  </div>
+</section>
+
+<!-- TEMPLATES -->
+<section class="templates" id="templates">
+  <div class="templates-header r">
+    <h2>I nostri <em>template</em></h2>
+    <div class="templates-count">01 disponibile · 02 in arrivo</div>
+  </div>
+  <div class="tpl-grid">
+
+    <!-- TEMPLATE 1: Casa Vittoria -->
+    <div class="tpl-card r">
+      <div class="tpl-thumb">
+        <div class="tpl-thumb-placeholder" style="background:linear-gradient(135deg,#B8A088,#D4C4A8,#8B7355)"></div>
+        <img src="https://images.unsplash.com/photo-1515263487990-61b07816b324?w=800&q=75" alt="Casa Vittoria" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" onerror="this.style.display='none'" loading="lazy"/>
+        <div class="tpl-badge"><span class="badge-popular">Bestseller</span></div>
+        <a href="https://adrian-vee.github.io/template-shop/" target="_blank" class="tpl-preview-btn"><span><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>Anteprima Live</span></a>
+      </div>
+      <div class="tpl-info">
+        <div class="tpl-meta">
+          <span class="tpl-type">Appartamento · Città</span>
+          <span class="tpl-rating"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>5.0</span>
+        </div>
+        <div class="tpl-name">Casa Vittoria</div>
+        <p class="tpl-desc">Template modern-bold per appartamenti turistici in città. Hero immersivo, galleria drag, booking con sync OTA, mappa interattiva.</p>
+        <div class="tpl-footer">
+          <div class="tpl-price">
+            <span class="tpl-price-amount">€149</span>
+            <span class="tpl-price-detail">inst. inclusa</span>
+          </div>
+          <a href="https://buy.stripe.com/IL_TUO_LINK_STRIPE" target="_blank" class="tpl-buy"><svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Acquista</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- TEMPLATE 2: Coming Soon -->
+    <div class="tpl-card soon r rd1">
+      <div class="tpl-thumb">
+        <div class="tpl-thumb-placeholder" style="background:linear-gradient(135deg,#7B8B6F,#A8B89A,#5B6B4F)"></div>
+        <div class="tpl-badge"><span class="badge-soon">In arrivo</span></div>
+      </div>
+      <div class="tpl-info">
+        <div class="tpl-meta">
+          <span class="tpl-type">Agriturismo · Campagna</span>
+        </div>
+        <div class="tpl-name">Podere Toscano</div>
+        <p class="tpl-desc">Template rustico-chic per agriturismi e casali di campagna. Colori caldi, galleria full-screen, mappa esperienze.</p>
+        <div class="tpl-footer">
+          <div class="tpl-price">
+            <span class="tpl-price-amount">€149</span>
+            <span class="tpl-price-detail">prossimamente</span>
+          </div>
+          <span class="tpl-buy">In arrivo</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- TEMPLATE 3: Coming Soon -->
+    <div class="tpl-card soon r rd2">
+      <div class="tpl-thumb">
+        <div class="tpl-thumb-placeholder" style="background:linear-gradient(135deg,#6B8EA0,#A0C8D8,#4B6E80)"></div>
+        <div class="tpl-badge"><span class="badge-soon">In arrivo</span></div>
+      </div>
+      <div class="tpl-info">
+        <div class="tpl-meta">
+          <span class="tpl-type">Villa · Mare / Lago</span>
+        </div>
+        <div class="tpl-name">Villa Azzurra</div>
+        <p class="tpl-desc">Template luxury-minimal per ville al mare o al lago. Palette mediterranea, video hero, prenotazione diretta integrata.</p>
+        <div class="tpl-footer">
+          <div class="tpl-price">
+            <span class="tpl-price-amount">€149</span>
+            <span class="tpl-price-detail">prossimamente</span>
+          </div>
+          <span class="tpl-buy">In arrivo</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <h2 class="r">Come <em>funziona</em></h2>
+  <p class="how-sub r">Dal pagamento al sito online in 24 ore</p>
+  <div class="how-grid">
+    <div class="how-step r">
+      <div class="how-icon"><svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></div>
+      <div class="how-num">01</div>
+      <h3>Scegli e acquista</h3>
+      <p>Scegli il template perfetto per la tua struttura. Pagamento sicuro con Stripe, download immediato.</p>
+    </div>
+    <div class="how-step r rd1">
+      <div class="how-icon"><svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></div>
+      <div class="how-num">02</div>
+      <h3>Personalizziamo insieme</h3>
+      <p>Ti contattiamo entro 24h. Inseriamo le tue foto, i tuoi testi, i link alle OTA e il tuo stile.</p>
+    </div>
+    <div class="how-step r rd2">
+      <div class="how-icon"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+      <div class="how-num">03</div>
+      <h3>Il tuo sito è online</h3>
+      <p>Installiamo tutto noi. Il tuo sito è live, sincronizzato con Booking, Airbnb e VRBO. Pronto a ricevere prenotazioni.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+  <div class="feat-grid">
+    <div class="feat-card r">
+      <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+      <h3>Sync Calendario OTA</h3>
+      <p>Collegamento iCal con Booking.com, Airbnb e VRBO per evitare overbooking.</p>
+    </div>
+    <div class="feat-card r rd1">
+      <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+      <h3>Mobile-First</h3>
+      <p>Ottimizzato per smartphone. Il 78% dei turisti prenota da mobile.</p>
+    </div>
+    <div class="feat-card r rd2">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      <h3>Multilingua Ready</h3>
+      <p>Struttura predisposta per italiano, inglese, tedesco e francese.</p>
+    </div>
+    <div class="feat-card r rd3">
+      <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <h3>GDPR Compliant</h3>
+      <p>Privacy policy, cookie banner e CIR/P.IVA già predisposti per la normativa italiana.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <h2 class="r">Domande <em>frequenti</em></h2>
+
+  <div class="faq-item r">
+    <div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">
+      Cosa include il prezzo di €149?
+      <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+    </div>
+    <div class="faq-a"><p>Il template HTML completo, l'installazione sul tuo dominio o hosting, la personalizzazione con le tue foto e testi, e la configurazione della sincronizzazione calendario con Booking, Airbnb e VRBO.</p></div>
+  </div>
+
+  <div class="faq-item r">
+    <div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">
+      Ho bisogno di competenze tecniche?
+      <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+    </div>
+    <div class="faq-a"><p>No. Ci occupiamo noi di tutto: installazione, configurazione e messa online. Tu devi solo fornirci le foto della tua struttura e i testi che vuoi inserire.</p></div>
+  </div>
+
+  <div class="faq-item r">
+    <div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">
+      Come funziona la sincronizzazione calendario?
+      <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+    </div>
+    <div class="faq-a"><p>Utilizziamo il protocollo iCal, lo standard universale supportato da Booking.com, Airbnb, VRBO e Expedia. Il calendario del sito si aggiorna automaticamente in base alle prenotazioni su tutte le piattaforme.</p></div>
+  </div>
+
+  <div class="faq-item r">
+    <div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">
+      Posso personalizzare il template?
+      <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+    </div>
+    <div class="faq-a"><p>Assolutamente sì. Il template è completamente modificabile. Cambiamo colori, foto, testi, layout su misura. Per modifiche extra oltre la personalizzazione base, contattaci per un preventivo.</p></div>
+  </div>
+
+  <div class="faq-item r">
+    <div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">
+      Quanto tempo serve per avere il sito online?
+      <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+    </div>
+    <div class="faq-a"><p>Dopo l'acquisto ti contattiamo entro 24 ore. Una volta ricevute le foto e i testi, il sito è online in 24-48 ore lavorative.</p></div>
+  </div>
+
+  <div class="faq-item r">
+    <div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">
+      Che metodi di pagamento accettate?
+      <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+    </div>
+    <div class="faq-a"><p>Il pagamento avviene tramite Stripe, che accetta carte di credito, debito, Apple Pay, Google Pay e bonifico SEPA. Tutto sicuro e certificato.</p></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="bottom-cta" id="contact">
+  <div class="cta-box">
+    <h2 class="r">Il sito che la tua struttura <em>merita</em></h2>
+    <p class="r">Non perdere più prenotazioni dirette. Un sito professionale costa meno di una notte nella tua struttura.</p>
+    <div class="cta-btns r">
+      <a href="#templates" class="cta-btn-w"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>Scegli un template</a>
+      <a href="https://wa.me/393928066329" class="cta-btn-o"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Scrivici su WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-l"><strong>TemplateStay</strong> · Template premium per locazioni turistiche · adrianveeofficial@gmail.com</div>
+  <div class="ft-r">
+    <a href="https://wa.me/393928066329">WhatsApp</a>
+    <a href="mailto:adrianveeofficial@gmail.com">Email</a>
+    <a href="#">Privacy Policy</a>
+  </div>
+</footer>
+
+<script>
+// Nav toggle mobile
+document.getElementById('navToggle').addEventListener('click',()=>document.getElementById('mobMenu').classList.toggle('open'));
+document.querySelectorAll('.mob-menu a').forEach(a=>a.addEventListener('click',()=>document.getElementById('mobMenu').classList.remove('open')));
+
+// Scroll reveals - robust version
+try {
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('v');obs.unobserve(e.target)}});
+  },{threshold:0.05,rootMargin:'0px 0px 0px 0px'});
+  document.querySelectorAll('.r').forEach(el=>obs.observe(el));
+} catch(e) {
+  // Fallback: show everything if IntersectionObserver fails
+  document.querySelectorAll('.r').forEach(el=>el.classList.add('v'));
+}
+
+// Also reveal after short delay as backup
+setTimeout(()=>{document.querySelectorAll('.r:not(.v)').forEach(el=>el.classList.add('v'))},1500);
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',function(e){
+    if(this.getAttribute('href').length>1){
+      e.preventDefault();
+      const t=document.querySelector(this.getAttribute('href'));
+      if(t)t.scrollIntoView({behavior:'smooth',block:'start'});
+    }
+  });
+});
+</script>
+</body>
+</html>
