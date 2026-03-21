@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dimora Rosa — Appartamento Elegante a Firenze</title>
+<meta name="description" content="Appartamento di charme nel cuore di Firenze. Design raffinato, terrazza fiorita, colazione artigianale. Prenota direttamente.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Nunito+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FBF8F6;--bg2:#F5F0EC;--bg3:#EDE6E0;
+  --card:#FFFFFF;--dark:#2C2024;--text:#2C2024;--text2:#6B5B62;--text3:#A8949C;--text4:#C8BBC2;
+  --rose:#C4727A;--rose2:#A85A62;--roseL:rgba(196,114,122,.07);--roseL2:rgba(196,114,122,.14);
+  --blush:#E8B4B8;--blushL:rgba(232,180,184,.12);
+  --gold:#C9A96E;--goldL:rgba(201,169,110,.1);
+  --lav:#9B8EC4;--lavL:rgba(155,142,196,.08);
+  --border:#E8DED6;--borderL:#F2ECE6;
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'Nunito Sans',system-ui,sans-serif;
+  --radius:20px;--radius-s:12px;--radius-xs:8px;
+  --shadow-s:0 2px 8px rgba(44,32,36,.04);
+  --shadow-m:0 8px 24px rgba(44,32,36,.06);
+  --shadow-l:0 16px 48px rgba(44,32,36,.08);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--rose);color:#fff}
+img{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:.7rem 2rem;display:flex;justify-content:space-between;align-items:center;background:rgba(251,248,246,.88);backdrop-filter:blur(24px);border-bottom:1px solid var(--borderL)}
+.n-logo{display:flex;align-items:center;gap:.5rem;font-family:var(--serif);font-size:1.1rem;font-weight:500;color:var(--text)}
+.n-logo-icon{width:30px;height:30px;background:linear-gradient(135deg,var(--rose),var(--blush));border-radius:50%;display:flex;align-items:center;justify-content:center}
+.n-logo-icon svg{width:15px;height:15px;stroke:#fff;stroke-width:2;fill:none}
+.n-mid{display:flex;gap:.3rem;background:var(--bg2);border-radius:100px;padding:.2rem}
+.n-mid a{padding:.4rem 1rem;border-radius:100px;font-size:.72rem;font-weight:600;color:var(--text3);transition:all .3s}
+.n-mid a:hover,.n-mid a.active{background:var(--card);color:var(--text);box-shadow:var(--shadow-s)}
+.n-right{display:flex;gap:.5rem;align-items:center}
+.n-wa{font-size:.72rem;font-weight:600;color:var(--text2);padding:.45rem 1rem;border:1px solid var(--border);border-radius:100px;transition:all .3s;display:flex;align-items:center;gap:.3rem}
+.n-wa:hover{border-color:var(--rose);color:var(--rose)}
+.n-wa svg{width:13px;height:13px;stroke:currentColor;stroke-width:1.5;fill:none}
+.n-cta{font-size:.72rem;font-weight:700;color:#fff;background:linear-gradient(135deg,var(--rose),var(--rose2));padding:.5rem 1.3rem;border-radius:100px;transition:all .3s;display:flex;align-items:center;gap:.3rem;box-shadow:0 4px 12px rgba(196,114,122,.2)}
+.n-cta:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(196,114,122,.3)}
+.n-cta svg{width:13px;height:13px;stroke:currentColor;stroke-width:2;fill:none}
+.n-toggle{display:none;width:32px;height:32px;border-radius:50%;background:var(--bg2);border:none;cursor:pointer;flex-direction:column;gap:4px;align-items:center;justify-content:center}
+.n-toggle span{width:14px;height:1.5px;background:var(--text);border-radius:2px}
+@media(max-width:768px){nav{padding:.5rem 1rem}.n-mid{display:none}.n-toggle{display:flex}.n-wa{display:none}.mob-nav{position:fixed;inset:0;background:rgba(251,248,246,.98);backdrop-filter:blur(20px);z-index:99;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.5rem;opacity:0;visibility:hidden;transition:all .3s}.mob-nav.open{opacity:1;visibility:visible}.mob-nav a{font-size:1.1rem;font-weight:600;color:var(--text)}}
+
+/* HERO */
+.hero{padding:6rem 2rem 2rem;max-width:1100px;margin:0 auto}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:center}
+.hero-text{padding-right:2rem}
+.hero-badge{display:inline-flex;align-items:center;gap:.4rem;background:var(--roseL);border:1px solid var(--roseL2);padding:.3rem .8rem;border-radius:100px;font-size:.65rem;font-weight:700;color:var(--rose);margin-bottom:1.2rem}
+.hero-badge::before{content:'';width:5px;height:5px;background:var(--rose);border-radius:50%}
+.hero-text h1{font-family:var(--serif);font-size:clamp(2rem,4vw,3rem);font-weight:500;line-height:1.15;margin-bottom:1rem;color:var(--text)}
+.hero-text h1 em{font-style:italic;color:var(--rose)}
+.hero-text>p{font-size:.9rem;color:var(--text2);line-height:1.75;margin-bottom:1.5rem}
+.hero-tags{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.h-tag{padding:.35rem .7rem;background:var(--card);border:1px solid var(--border);border-radius:100px;font-size:.65rem;font-weight:600;color:var(--text2);display:flex;align-items:center;gap:.3rem;transition:all .3s}
+.h-tag:hover{border-color:var(--rose);color:var(--rose);background:var(--roseL)}
+.h-tag svg{width:12px;height:12px;stroke:currentColor;stroke-width:1.5;fill:none}
+.hero-btns{display:flex;gap:.6rem}
+.hb-fill{background:linear-gradient(135deg,var(--rose),var(--rose2));color:#fff;padding:.7rem 1.8rem;border-radius:100px;font-size:.78rem;font-weight:700;transition:all .3s;display:flex;align-items:center;gap:.4rem;box-shadow:0 4px 16px rgba(196,114,122,.2)}
+.hb-fill:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(196,114,122,.3)}
+.hb-fill svg{width:15px;height:15px;stroke:currentColor;stroke-width:2;fill:none}
+.hb-outline{border:1px solid var(--border);color:var(--text);padding:.7rem 1.8rem;border-radius:100px;font-size:.78rem;font-weight:600;transition:all .3s;display:flex;align-items:center;gap:.4rem}
+.hb-outline:hover{border-color:var(--text);transform:translateY(-2px)}
+.hb-outline svg{width:15px;height:15px;stroke:currentColor;stroke-width:1.5;fill:none}
+.hero-img{border-radius:var(--radius);overflow:hidden;aspect-ratio:3/4;position:relative;background:linear-gradient(135deg,#D4A0A8,#E8C4C8,#B88890)}
+.hero-img img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.hero-img-float{position:absolute;bottom:1.2rem;left:1.2rem;right:1.2rem;background:rgba(255,255,255,.88);backdrop-filter:blur(12px);border-radius:var(--radius-s);padding:1rem;display:flex;align-items:center;gap:.8rem;z-index:1}
+.hif-stars{color:var(--gold);font-size:.6rem;letter-spacing:1px}
+.hif-num{font-family:var(--serif);font-size:1.5rem;font-weight:600;line-height:1}
+.hif-text{font-size:.65rem;color:var(--text3)}
+@media(max-width:768px){.hero{padding:5rem 1rem 1.5rem}.hero-grid{grid-template-columns:1fr}.hero-text{padding:0}.hero-img{aspect-ratio:4/3}}
+
+/* SEARCH */
+.search{max-width:1100px;margin:0 auto;padding:1rem 2rem}
+.search-inner{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:.5rem;display:flex;align-items:center;gap:0;box-shadow:var(--shadow-m)}
+.sf{flex:1;padding:.6rem 1rem;display:flex;align-items:center;gap:.5rem;border-right:1px solid var(--borderL)}
+.sf:last-of-type{border-right:none}
+.sf svg{width:16px;height:16px;stroke:var(--text4);stroke-width:1.5;fill:none;flex-shrink:0}
+.sf label{font-size:.55rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text3);display:block;margin-bottom:.1rem}
+.sf input{border:none;background:none;font-family:var(--sans);font-size:.82rem;font-weight:500;color:var(--text);width:100%;outline:none}
+.sf input::placeholder{color:var(--text4)}
+.s-btn{background:linear-gradient(135deg,var(--rose),var(--rose2));color:#fff;border:none;padding:.7rem 1.3rem;border-radius:var(--radius-s);font-family:var(--sans);font-size:.72rem;font-weight:700;cursor:pointer;transition:all .3s;display:flex;align-items:center;gap:.4rem;white-space:nowrap;box-shadow:0 4px 12px rgba(196,114,122,.2)}
+.s-btn:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(196,114,122,.3)}
+.s-btn svg{width:15px;height:15px;stroke:currentColor;stroke-width:2;fill:none}
+.s-sync{text-align:center;padding:.5rem;font-size:.6rem;color:var(--text3);display:flex;align-items:center;justify-content:center;gap:.3rem}
+.s-sync svg{width:11px;height:11px;stroke:var(--rose);stroke-width:1.5;fill:none}
+@media(max-width:768px){.search{padding:.8rem 1rem}.search-inner{flex-direction:column;border-radius:var(--radius-s)}.sf{border-right:none;border-bottom:1px solid var(--borderL);width:100%}.s-btn{width:100%;justify-content:center;border-radius:var(--radius-xs)}}
+
+/* STATS */
+.stats{max-width:1100px;margin:0 auto;padding:1rem 2rem}
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:.6rem}
+.stat{background:var(--card);border:1px solid var(--borderL);border-radius:var(--radius-s);padding:1rem;display:flex;align-items:center;gap:.7rem;transition:all .3s}
+.stat:hover{border-color:var(--rose);box-shadow:var(--shadow-s);transform:translateY(-2px)}
+.stat-ic{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.stat-ic svg{width:18px;height:18px;stroke-width:1.5;fill:none}
+.si-rose{background:var(--roseL)}.si-rose svg{stroke:var(--rose)}
+.si-lav{background:var(--lavL)}.si-lav svg{stroke:var(--lav)}
+.si-gold{background:var(--goldL)}.si-gold svg{stroke:var(--gold)}
+.stat-num{font-family:var(--serif);font-size:1.3rem;font-weight:600;line-height:1}
+.stat-label{font-size:.62rem;color:var(--text3)}
+@media(max-width:768px){.stats{padding:.8rem 1rem}.stats-row{grid-template-columns:1fr 1fr;gap:.4rem}}
+
+/* SECTIONS */
+.sec{max-width:1100px;margin:0 auto;padding:2.5rem 2rem}
+.sec-top{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:1.5rem}
+.sec-top h2{font-family:var(--serif);font-size:clamp(1.3rem,2.5vw,1.7rem);font-weight:500}
+.sec-top h2 em{font-style:italic;color:var(--rose)}
+.sec-sub{font-size:.78rem;color:var(--text3);margin-top:.2rem}
+@media(max-width:768px){.sec{padding:2rem 1rem}}
+
+/* GALLERY */
+.gal{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:auto auto;gap:.5rem}
+.gal-item{border-radius:var(--radius-s);overflow:hidden;position:relative;cursor:pointer;background:var(--bg3)}
+.gal-item img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.16,1,.3,1)}
+.gal-item:hover img{transform:scale(1.04)}
+.gal-big{grid-row:1/3}
+.gal-item:not(.gal-big){aspect-ratio:4/3}
+.gal-tag{position:absolute;bottom:.6rem;left:.6rem;background:rgba(255,255,255,.88);backdrop-filter:blur(8px);padding:.25rem .6rem;border-radius:100px;font-size:.58rem;font-weight:600;color:var(--text);opacity:0;transform:translateY(4px);transition:all .3s}
+.gal-item:hover .gal-tag{opacity:1;transform:translateY(0)}
+@media(max-width:768px){.gal{grid-template-columns:1fr 1fr}.gal-big{grid-column:1/-1;grid-row:auto}}
+
+/* AMENITIES PILLS */
+.am-pills{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.8rem}
+.am-pill{display:flex;align-items:center;gap:.4rem;padding:.55rem .9rem;background:var(--card);border:1px solid var(--border);border-radius:100px;transition:all .3s;font-size:.75rem;font-weight:500;color:var(--text2)}
+.am-pill:hover{border-color:var(--rose);background:var(--roseL);color:var(--rose)}
+.am-pill svg{width:16px;height:16px;stroke:currentColor;stroke-width:1.5;fill:none}
+
+/* EXPERIENCE CARDS */
+.exp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.exp-card{background:var(--card);border:1px solid var(--borderL);border-radius:var(--radius);overflow:hidden;transition:all .4s}
+.exp-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-l);border-color:transparent}
+.exp-img{aspect-ratio:16/10;overflow:hidden;position:relative;background:var(--bg3)}
+.exp-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.exp-card:hover .exp-img img{transform:scale(1.05)}
+.exp-img-tag{position:absolute;top:.5rem;left:.5rem;background:rgba(255,255,255,.88);backdrop-filter:blur(8px);padding:.2rem .5rem;border-radius:100px;font-size:.55rem;font-weight:600;color:var(--text)}
+.exp-body{padding:1rem}
+.exp-body h3{font-family:var(--serif);font-size:1rem;font-weight:500;margin-bottom:.2rem}
+.exp-body p{font-size:.7rem;color:var(--text3);line-height:1.5}
+.exp-meta{display:flex;align-items:center;gap:.3rem;margin-top:.6rem;font-size:.65rem;color:var(--text3)}
+.exp-meta svg{width:11px;height:11px;fill:var(--gold);stroke:none}
+@media(max-width:768px){.exp-grid{grid-template-columns:1fr}}
+
+/* REVIEWS */
+.rev-scroll{display:flex;gap:.8rem;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:.5rem}
+.rev-scroll::-webkit-scrollbar{display:none}
+.rev-card{flex-shrink:0;width:340px;scroll-snap-align:start;background:var(--card);border:1px solid var(--borderL);border-radius:var(--radius);padding:1.3rem;transition:all .3s}
+.rev-card:hover{border-color:var(--rose);box-shadow:var(--shadow-m);transform:translateY(-2px)}
+.rev-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.6rem}
+.rev-stars{display:flex;gap:2px}
+.rev-stars svg{width:13px;height:13px;fill:var(--gold);stroke:none}
+.rev-src{font-size:.55rem;font-weight:600;color:var(--text4);text-transform:uppercase;letter-spacing:.06em}
+.rev-txt{font-size:.82rem;line-height:1.7;color:var(--text2);margin-bottom:.8rem;font-style:italic}
+.rev-auth{display:flex;align-items:center;gap:.5rem}
+.rev-av{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--rose),var(--blush));display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:700;color:#fff}
+.rev-nm{font-weight:600;font-size:.75rem}
+.rev-dt{font-size:.6rem;color:var(--text3)}
+@media(max-width:768px){.rev-card{width:290px;padding:1rem}}
+
+/* MAP */
+.map-wrap{display:grid;grid-template-columns:1fr 1fr;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);background:var(--card);margin-top:.8rem}
+.map-fr{min-height:380px;background:var(--bg3)}
+.map-fr iframe{width:100%;height:100%;border:none;filter:saturate(.35) brightness(1.05) hue-rotate(10deg)}
+.map-in{padding:2rem}
+.map-in h3{font-family:var(--serif);font-size:1.2rem;font-weight:500;margin-bottom:.3rem}
+.map-in>p{font-size:.75rem;color:var(--text3);line-height:1.6;margin-bottom:1.2rem}
+.poi{list-style:none}
+.poi li{display:flex;align-items:center;gap:.6rem;padding:.6rem 0;border-bottom:1px solid var(--borderL);transition:all .2s}
+.poi li:last-child{border-bottom:none}
+.poi li:hover{padding-left:.3rem}
+.poi-ic{width:30px;height:30px;border-radius:50%;background:var(--roseL);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.poi-ic svg{width:14px;height:14px;stroke:var(--rose);stroke-width:1.5;fill:none}
+.poi-nm{font-size:.8rem;font-weight:500}
+.poi-ds{margin-left:auto;font-size:.68rem;font-weight:600;color:var(--rose);background:var(--roseL);padding:.15rem .5rem;border-radius:100px}
+@media(max-width:768px){.map-wrap{grid-template-columns:1fr;border-radius:var(--radius-s)}.map-fr{min-height:220px}.map-in{padding:1.5rem}}
+
+/* CTA */
+.cta-wrap{max-width:1100px;margin:0 auto;padding:2rem}
+.cta-box{background:var(--dark);border-radius:var(--radius);padding:3rem;text-align:center;position:relative;overflow:hidden}
+.cta-box::before{content:'';position:absolute;width:300px;height:300px;border-radius:50%;background:rgba(196,114,122,.1);top:-80px;right:-60px}
+.cta-box::after{content:'';position:absolute;width:200px;height:200px;border-radius:50%;background:rgba(232,180,184,.06);bottom:-60px;left:-40px}
+.cta-box h2{font-family:var(--serif);font-size:clamp(1.4rem,3vw,2rem);font-weight:500;color:#fff;margin-bottom:.5rem;position:relative}
+.cta-box h2 em{font-style:italic;color:var(--blush)}
+.cta-box>p{font-size:.82rem;color:rgba(255,255,255,.4);max-width:400px;margin:0 auto 1.5rem;line-height:1.7;position:relative}
+.cta-btns{display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap;position:relative}
+.ct-fill{background:linear-gradient(135deg,var(--rose),var(--rose2));color:#fff;padding:.7rem 1.8rem;border-radius:100px;font-size:.75rem;font-weight:700;transition:all .3s;display:inline-flex;align-items:center;gap:.4rem;box-shadow:0 4px 16px rgba(196,114,122,.3)}
+.ct-fill:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(196,114,122,.4)}
+.ct-fill svg,.ct-out svg{width:15px;height:15px;stroke:currentColor;stroke-width:1.5;fill:none}
+.ct-out{border:1px solid rgba(255,255,255,.15);color:#fff;padding:.7rem 1.8rem;border-radius:100px;font-size:.75rem;font-weight:600;transition:all .3s;display:inline-flex;align-items:center;gap:.4rem}
+.ct-out:hover{border-color:rgba(255,255,255,.5);transform:translateY(-2px)}
+@media(max-width:768px){.cta-wrap{padding:1.5rem 1rem}.cta-box{padding:2rem 1.5rem;border-radius:var(--radius-s)}}
+
+/* FOOTER */
+footer{max-width:1100px;margin:0 auto;padding:1.5rem 2rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.8rem}
+.ft-l{font-size:.65rem;color:var(--text3)}.ft-l strong{color:var(--text);font-weight:600}
+.ft-r{display:flex;gap:1rem}
+.ft-r a{font-size:.65rem;color:var(--text3);transition:color .3s}
+.ft-r a:hover{color:var(--rose)}
+@media(max-width:768px){footer{padding:1.5rem 1rem 5rem;flex-direction:column;text-align:center}}
+
+/* PURCHASE BANNER */
+.pb{position:fixed;bottom:1.5rem;right:1.5rem;z-index:90;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow-l);padding:1.3rem;max-width:290px;opacity:0;transform:translateY(15px);transition:all .4s;pointer-events:none}
+.pb.show{opacity:1;transform:translateY(0);pointer-events:all}
+.pb-x{position:absolute;top:.4rem;right:.5rem;background:var(--bg2);border:none;width:22px;height:22px;border-radius:50%;cursor:pointer;color:var(--text3);font-size:.85rem;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.pb-x:hover{background:var(--border);color:var(--text)}
+.pb-tag{display:inline-flex;align-items:center;gap:.25rem;background:var(--roseL);color:var(--rose);padding:.2rem .5rem;border-radius:100px;font-size:.55rem;font-weight:700;margin-bottom:.4rem}
+.pb-tag::before{content:'';width:4px;height:4px;background:var(--rose);border-radius:50%;animation:pp 2s ease infinite}
+@keyframes pp{0%,100%{opacity:1}50%{opacity:.3}}
+.pb-tt{font-family:var(--serif);font-size:1rem;margin-bottom:.1rem}
+.pb-pr{display:flex;align-items:baseline;gap:.25rem;margin-bottom:.4rem}
+.pb-am{font-family:var(--serif);font-size:1.5rem;font-weight:600}
+.pb-dt{font-size:.6rem;color:var(--text3)}
+.pb-fs{display:flex;flex-direction:column;gap:.2rem;margin-bottom:.5rem;padding-bottom:.5rem;border-bottom:1px solid var(--borderL)}
+.pb-f{font-size:.6rem;color:var(--text2);display:flex;align-items:center;gap:.25rem}
+.pb-f svg{width:10px;height:10px;stroke:var(--rose);stroke-width:2;fill:none;flex-shrink:0}
+.pb-buy{display:block;width:100%;background:linear-gradient(135deg,var(--rose),var(--rose2));color:#fff;border:none;padding:.65rem;border-radius:100px;font-family:var(--sans);font-size:.65rem;font-weight:700;cursor:pointer;transition:all .3s;text-align:center}
+.pb-buy:hover{box-shadow:0 4px 16px rgba(196,114,122,.3)}
+.pb-st{font-size:.5rem;color:var(--text3);text-align:center;margin-top:.25rem}
+
+/* MOBILE BAR */
+.mbb{position:fixed;bottom:0;left:0;right:0;z-index:90;background:var(--card);border-top:1px solid var(--border);box-shadow:0 -4px 16px rgba(44,32,36,.06);padding:.6rem 1rem;display:none;align-items:center;gap:.5rem;transform:translateY(100%);transition:transform .4s}
+.mbb.show{transform:translateY(0)}
+.mbb-i{flex:1}
+.mbb-l{font-size:.45rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--rose)}
+.mbb-r{display:flex;align-items:baseline;gap:.2rem}
+.mbb-p{font-family:var(--serif);font-size:1.1rem;font-weight:600;line-height:1}
+.mbb-d{font-size:.5rem;color:var(--text3)}
+.mbb-b{background:linear-gradient(135deg,var(--rose),var(--rose2));color:#fff;border:none;padding:.55rem 1.2rem;border-radius:100px;font-family:var(--sans);font-size:.6rem;font-weight:700;cursor:pointer;white-space:nowrap;transition:all .3s;flex-shrink:0}
+.mbb-b:hover{box-shadow:0 4px 12px rgba(196,114,122,.3)}
+@media(max-width:768px){.pb{display:none!important}.mbb{display:flex}}
+@media(min-width:769px){.mbb{display:none!important}}
+
+/* PRIVACY PAGE (inline modal) */
+.privacy-overlay{position:fixed;inset:0;z-index:200;background:rgba(44,32,36,.5);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:2rem}
+.privacy-overlay.open{display:flex}
+.privacy-box{background:var(--card);border-radius:var(--radius);max-width:700px;width:100%;max-height:80vh;overflow-y:auto;padding:2.5rem;position:relative}
+.privacy-box h2{font-family:var(--serif);font-size:1.5rem;font-weight:500;margin-bottom:1rem;color:var(--text)}
+.privacy-box h3{font-family:var(--serif);font-size:1.05rem;font-weight:500;margin:1.5rem 0 .5rem;color:var(--text)}
+.privacy-box p{font-size:.82rem;color:var(--text2);line-height:1.8;margin-bottom:.8rem}
+.privacy-box ul{margin:.5rem 0 1rem 1.5rem}
+.privacy-box li{font-size:.82rem;color:var(--text2);line-height:1.8;margin-bottom:.3rem}
+.privacy-close{position:sticky;top:0;float:right;background:var(--bg2);border:none;width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:1rem;color:var(--text3);display:flex;align-items:center;justify-content:center;z-index:1;transition:all .2s}
+.privacy-close:hover{background:var(--border);color:var(--text)}
+
+/* COOKIE BANNER */
+.ck-ban{position:fixed;bottom:0;left:0;right:0;z-index:95;background:rgba(44,32,36,.95);backdrop-filter:blur(16px);padding:.8rem 2rem;display:none;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.08)}
+.ck-ban.show{display:flex}
+.ck-ban p{font-size:.72rem;color:rgba(255,255,255,.6);line-height:1.5;flex:1;min-width:240px}
+.ck-ban a{color:rgba(255,255,255,.8);text-decoration:underline;cursor:pointer}
+.ck-btns{display:flex;gap:.4rem;flex-shrink:0}
+.ck-y{background:#fff;color:var(--dark);border:none;padding:.45rem 1rem;font-size:.68rem;font-weight:600;cursor:pointer;border-radius:100px;transition:opacity .3s}
+.ck-y:hover{opacity:.9}
+.ck-n{background:transparent;color:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.15);padding:.45rem 1rem;font-size:.68rem;font-weight:600;cursor:pointer;border-radius:100px;transition:all .3s}
+.ck-n:hover{border-color:rgba(255,255,255,.4);color:rgba(255,255,255,.8)}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="n-logo"><div class="n-logo-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>Dimora Rosa</a>
+  <div class="n-mid">
+    <a href="#gallery">Galleria</a>
+    <a href="#amenities">Servizi</a>
+    <a href="#reviews">Recensioni</a>
+    <a href="#location">Posizione</a>
+  </div>
+  <div class="n-right">
+    <a href="https://wa.me/39000000000" class="n-wa"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>WhatsApp</a>
+    <a href="#contact" class="n-cta"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/></svg>Prenota</a>
+    <button class="n-toggle" id="nT"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mob-nav" id="mn"><a href="#gallery">Galleria</a><a href="#amenities">Servizi</a><a href="#reviews">Recensioni</a><a href="#location">Posizione</a><a href="#contact">Prenota</a></div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid">
+    <div class="hero-text">
+      <div class="hero-badge">Superhost · 4.97 su 5</div>
+      <h1>La tua <em>dolce fuga</em> nel cuore di Firenze</h1>
+      <p>Appartamento romantico con terrazza fiorita, affacciato sulle cupole. Arredamento d'epoca, colazione con pasticceria artigianale, cura nei dettagli che fa la differenza.</p>
+      <div class="hero-tags">
+        <div class="h-tag"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>70 mq</div>
+        <div class="h-tag"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>Romantico</div>
+        <div class="h-tag"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>Fino a 4 ospiti</div>
+        <div class="h-tag"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Self check-in</div>
+      </div>
+      <div class="hero-btns">
+        <a href="#contact" class="hb-fill"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/></svg>Verifica disponibilita</a>
+        <a href="#gallery" class="hb-outline"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>Galleria</a>
+      </div>
+    </div>
+    <div class="hero-img">
+      <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80" alt="Dimora Rosa Firenze" loading="eager">
+      <div class="hero-img-float">
+        <div><div class="hif-num">4.97</div><div class="hif-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div></div>
+        <div class="hif-text">156 recensioni verificate<br>su Airbnb, Booking e Google</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SEARCH -->
+<div class="search">
+  <div class="search-inner">
+    <div class="sf"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg><div><label>Check-in</label><input type="date"></div></div>
+    <div class="sf"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg><div><label>Check-out</label><input type="date"></div></div>
+    <div class="sf"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg><div><label>Ospiti</label><input type="number" min="1" max="4" placeholder="2 ospiti"></div></div>
+    <button class="s-btn"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>Cerca</button>
+  </div>
+  <div class="s-sync"><svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>Calendario sincronizzato con Booking.com, Airbnb, VRBO</div>
+</div>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-row">
+    <div class="stat"><div class="stat-ic si-rose"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div><div><div class="stat-num">70</div><div class="stat-label">Metri quadri</div></div></div>
+    <div class="stat"><div class="stat-ic si-lav"><svg viewBox="0 0 24 24"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/></svg></div><div><div class="stat-num">2</div><div class="stat-label">Camere</div></div></div>
+    <div class="stat"><div class="stat-ic si-rose"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div><div><div class="stat-num">4</div><div class="stat-label">Ospiti max</div></div></div>
+    <div class="stat"><div class="stat-ic si-gold"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><div><div class="stat-num">4.97</div><div class="stat-label">Valutazione</div></div></div>
+  </div>
+</div>
+
+<!-- GALLERY -->
+<section class="sec" id="gallery">
+  <div class="sec-top"><div><h2>Scopri gli <em>ambienti</em></h2><p class="sec-sub">Ogni dettaglio pensato per farti sentire a casa</p></div></div>
+  <div class="gal">
+    <div class="gal-item gal-big"><img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80" alt="Camera" loading="lazy"><div class="gal-tag">Camera principale</div></div>
+    <div class="gal-item"><img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=500&q=80" alt="Letto" loading="lazy"><div class="gal-tag">Suite romantica</div></div>
+    <div class="gal-item"><img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=500&q=80" alt="Cucina" loading="lazy"><div class="gal-tag">Angolo cucina</div></div>
+    <div class="gal-item"><img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=500&q=80" alt="Bagno" loading="lazy"><div class="gal-tag">Bagno con vasca</div></div>
+    <div class="gal-item"><img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=500&q=80" alt="Terrazza" loading="lazy"><div class="gal-tag">Terrazza fiorita</div></div>
+  </div>
+</section>
+
+<!-- AMENITIES -->
+<section class="sec" id="amenities">
+  <div class="sec-top"><div><h2>Servizi <em>inclusi</em></h2></div></div>
+  <div class="am-pills">
+    <div class="am-pill"><svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1"/></svg>WiFi veloce</div>
+    <div class="am-pill"><svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/></svg>Aria condizionata</div>
+    <div class="am-pill"><svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>Colazione artigianale</div>
+    <div class="am-pill"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="15" rx="2"/><polyline points="17 2 12 7 7 2"/></svg>Smart TV</div>
+    <div class="am-pill"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Self check-in</div>
+    <div class="am-pill"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Check-in flessibile</div>
+    <div class="am-pill"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>Biancheria di lusso</div>
+    <div class="am-pill"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>Kit benvenuto donna</div>
+    <div class="am-pill"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>Terrazza privata</div>
+    <div class="am-pill"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Prodotti bio</div>
+  </div>
+</section>
+
+<!-- EXPERIENCES -->
+<section class="sec">
+  <div class="sec-top"><div><h2>Esperienze <em>curate</em></h2></div></div>
+  <div class="exp-grid">
+    <div class="exp-card"><div class="exp-img"><img src="https://images.unsplash.com/photo-1504279577054-acfeccf8fc52?w=500&q=80" alt="Wine" loading="lazy"><div class="exp-img-tag">In zona</div></div><div class="exp-body"><h3>Degustazione vini e olio</h3><p>Scopri i sapori toscani con una degustazione privata in cantina.</p><div class="exp-meta"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>4.9 Consigliato</div></div></div>
+    <div class="exp-card"><div class="exp-img"><img src="https://images.unsplash.com/photo-1551632436-cbf8dd35adfa?w=500&q=80" alt="Cooking" loading="lazy"><div class="exp-img-tag">In dimora</div></div><div class="exp-body"><h3>Cooking class fiorentina</h3><p>Prepara la ribollita con ingredienti del mercato di Sant'Ambrogio.</p><div class="exp-meta"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>5.0 Top</div></div></div>
+    <div class="exp-card"><div class="exp-img"><img src="https://images.unsplash.com/photo-1534787238916-9ba6764efd4f?w=500&q=80" alt="Tour" loading="lazy"><div class="exp-img-tag">A piedi</div></div><div class="exp-body"><h3>Tour artigianale dell'Oltrarno</h3><p>Visita botteghe di pelletteria, profumerie e laboratori orafi.</p><div class="exp-meta"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>4.8 Popolare</div></div></div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="sec" id="reviews" style="background:var(--bg2);max-width:none;padding:2.5rem 0">
+  <div style="max-width:1100px;margin:0 auto;padding:0 2rem">
+    <div class="sec-top"><div><h2>Cosa dicono le nostre <em>ospiti</em></h2></div></div>
+  </div>
+  <div class="rev-scroll" style="padding-left:max(2rem,calc((100vw - 1100px)/2 + 2rem))">
+    <div class="rev-card"><div class="rev-top"><div class="rev-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><div class="rev-src">Airbnb</div></div><p class="rev-txt">Un angolo di paradiso. La terrazza fiorita con vista sulle cupole al tramonto mi ha fatto piangere di gioia. I dettagli femminili sono perfetti.</p><div class="rev-auth"><div class="rev-av">EC</div><div><div class="rev-nm">Elena C.</div><div class="rev-dt">Novembre 2025</div></div></div></div>
+    <div class="rev-card"><div class="rev-top"><div class="rev-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><div class="rev-src">Booking</div></div><p class="rev-txt">Ho portato mia madre per il suo compleanno. La colazione con i cornetti appena sfornati e la marmellata fatta in casa ci ha conquistate.</p><div class="rev-auth"><div class="rev-av">GB</div><div><div class="rev-nm">Giulia B.</div><div class="rev-dt">Ottobre 2025</div></div></div></div>
+    <div class="rev-card"><div class="rev-top"><div class="rev-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><div class="rev-src">Google</div></div><p class="rev-txt">Ein wunderschoenes Apartment! Die Gastgeberin hat frische Blumen und Prosecco fuer uns bereitgestellt. Wir fuehlen uns wie Prinzessinnen!</p><div class="rev-auth"><div class="rev-av">LM</div><div><div class="rev-nm">Lena M.</div><div class="rev-dt">Settembre 2025</div></div></div></div>
+    <div class="rev-card"><div class="rev-top"><div class="rev-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><div class="rev-src">Airbnb</div></div><p class="rev-txt">My best friend and I had the most magical girls' trip. The rose-themed welcome kit and the hand-written recommendations were so thoughtful.</p><div class="rev-auth"><div class="rev-av">SK</div><div><div class="rev-nm">Sarah K.</div><div class="rev-dt">Agosto 2025</div></div></div></div>
+  </div>
+</section>
+
+<!-- MAP -->
+<section class="sec" id="location">
+  <div class="sec-top"><div><h2>Dove <em>siamo</em></h2><p class="sec-sub">Nel cuore dell'Oltrarno, il quartiere piu autentico di Firenze</p></div></div>
+  <div class="map-wrap">
+    <div class="map-fr"><iframe src="https://www.openstreetmap.org/export/embed.html?bbox=11.240%2C43.765%2C11.260%2C43.775&layer=mapnik&marker=43.7696%2C11.2498" loading="lazy"></iframe></div>
+    <div class="map-in">
+      <h3>Oltrarno, Firenze</h3>
+      <p>Botteghe artigiane, pasticcerie storiche e il fascino autentico di Firenze lontano dalla folla.</p>
+      <ul class="poi">
+        <li><div class="poi-ic"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><span class="poi-nm">Ponte Vecchio</span><span class="poi-ds">350m</span></li>
+        <li><div class="poi-ic"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div><span class="poi-nm">Palazzo Pitti</span><span class="poi-ds">200m</span></li>
+        <li><div class="poi-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/></svg></div><span class="poi-nm">Galleria degli Uffizi</span><span class="poi-ds">500m</span></li>
+        <li><div class="poi-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><span class="poi-nm">Duomo di Firenze</span><span class="poi-ds">800m</span></li>
+        <li><div class="poi-ic"><svg viewBox="0 0 24 24"><path d="M17.8 19.2L16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg></div><span class="poi-nm">Aeroporto Firenze</span><span class="poi-ds">20 min</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-wrap" id="contact">
+  <div class="cta-box">
+    <h2>Pronta per la tua <em>dolce fuga</em>?</h2>
+    <p>Prenota direttamente e risparmia. Nessuna commissione, contatto diretto, le migliori tariffe.</p>
+    <div class="cta-btns">
+      <a href="https://wa.me/39000000000" class="ct-fill"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>WhatsApp</a>
+      <a href="mailto:info@dimorarosa.it" class="ct-out"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Email</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-l"><strong>Dimora Rosa</strong> · P.IVA 00000000000 · CIR: 048017-LOC-00000 · Firenze, Toscana</div>
+  <div class="ft-r"><a href="#">Instagram</a><a href="#">Airbnb</a><a href="#">Booking</a><a href="#" onclick="event.preventDefault();document.getElementById('privacyModal').classList.add('open')">Privacy Policy</a></div>
+</footer>
+
+<!-- PURCHASE BANNER -->
+<div class="pb" id="pb">
+  <button class="pb-x" id="pbX">&#215;</button>
+  <div class="pb-tag">Template Premium</div>
+  <div class="pb-tt">Ti piace questo template?</div>
+  <div class="pb-pr"><span class="pb-am">&#8364;169</span><span class="pb-dt">una tantum</span></div>
+  <div class="pb-fs">
+    <div class="pb-f"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Download immediato</div>
+    <div class="pb-f"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Installazione inclusa</div>
+    <div class="pb-f"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Personalizzabile su misura</div>
+    <div class="pb-f"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Sync Booking, Airbnb, VRBO</div>
+  </div>
+  <a href="https://buy.stripe.com/PLACEHOLDER_DIMORA_ROSA" class="pb-buy" target="_blank">Acquista &#8212; &#8364;169</a>
+  <div class="pb-st">Pagamento sicuro via Stripe</div>
+</div>
+<div class="mbb" id="mbb"><div class="mbb-i"><div class="mbb-l">Template Premium</div><div class="mbb-r"><span class="mbb-p">&#8364;169</span><span class="mbb-d">inst. inclusa</span></div></div><a href="https://buy.stripe.com/PLACEHOLDER_DIMORA_ROSA" class="mbb-b" target="_blank">Acquista</a></div>
+
+<!-- PRIVACY POLICY MODAL -->
+<div class="privacy-overlay" id="privacyModal">
+  <div class="privacy-box">
+    <button class="privacy-close" onclick="document.getElementById('privacyModal').classList.remove('open')">&#215;</button>
+    <h2>Privacy Policy</h2>
+    <p><strong>Ultimo aggiornamento:</strong> Marzo 2026</p>
+    <p>La presente informativa sulla privacy descrive come Dimora Rosa (di seguito "la Struttura", "noi") raccoglie, utilizza e protegge le informazioni personali degli utenti che visitano il sito web e/o effettuano una prenotazione.</p>
+
+    <h3>1. Titolare del trattamento</h3>
+    <p>Il titolare del trattamento dei dati personali e il proprietario della struttura ricettiva Dimora Rosa, con sede in Firenze (FI), Italia. Per qualsiasi richiesta relativa alla privacy, e possibile contattarci all'indirizzo email: info@dimorarosa.it</p>
+
+    <h3>2. Dati raccolti</h3>
+    <p>Raccogliamo le seguenti categorie di dati personali:</p>
+    <ul>
+      <li><strong>Dati identificativi:</strong> nome, cognome, data di nascita, nazionalita, numero del documento di identita (obbligatorio per legge ai sensi dell'art. 109 TULPS)</li>
+      <li><strong>Dati di contatto:</strong> indirizzo email, numero di telefono</li>
+      <li><strong>Dati di prenotazione:</strong> date di soggiorno, numero di ospiti, preferenze</li>
+      <li><strong>Dati di navigazione:</strong> indirizzo IP, tipo di browser, pagine visitate (tramite cookie tecnici)</li>
+    </ul>
+
+    <h3>3. Finalita del trattamento</h3>
+    <p>I dati personali sono trattati per le seguenti finalita:</p>
+    <ul>
+      <li>Gestione delle prenotazioni e comunicazioni relative al soggiorno</li>
+      <li>Adempimento degli obblighi di legge (comunicazione alle autorita di pubblica sicurezza tramite il portale Alloggiati Web, adempimenti fiscali, ISTAT)</li>
+      <li>Invio di comunicazioni di servizio relative alla prenotazione</li>
+      <li>Miglioramento del servizio e analisi aggregate anonime del traffico web</li>
+    </ul>
+
+    <h3>4. Base giuridica</h3>
+    <p>Il trattamento dei dati si basa su: esecuzione del contratto di soggiorno, adempimento di obblighi legali (normativa alloggiati, fiscale, ISTAT), legittimo interesse del titolare per il miglioramento del servizio, consenso dell'interessato per eventuali comunicazioni promozionali.</p>
+
+    <h3>5. Cookie</h3>
+    <p>Questo sito utilizza esclusivamente cookie tecnici necessari al funzionamento del sito. Non utilizziamo cookie di profilazione ne cookie di terze parti per finalita pubblicitarie. I cookie tecnici non richiedono il consenso dell'utente ai sensi dell'art. 122 del Codice Privacy.</p>
+
+    <h3>6. Condivisione dei dati</h3>
+    <p>I dati personali non vengono venduti, ceduti o condivisi con terze parti per finalita commerciali. I dati vengono comunicati esclusivamente a:</p>
+    <ul>
+      <li>Autorita di pubblica sicurezza (Questura) tramite portale Alloggiati Web</li>
+      <li>Comune di Firenze per la tassa di soggiorno</li>
+      <li>ISTAT per le rilevazioni statistiche sul turismo</li>
+      <li>Piattaforme OTA (Booking.com, Airbnb) limitatamente ai dati necessari per la gestione della prenotazione</li>
+    </ul>
+
+    <h3>7. Conservazione dei dati</h3>
+    <p>I dati personali sono conservati per il periodo strettamente necessario alle finalita per cui sono stati raccolti e comunque non oltre i termini previsti dalla legge (5 anni per i dati fiscali, 5 anni per i dati di pubblica sicurezza).</p>
+
+    <h3>8. Diritti dell'interessato</h3>
+    <p>Ai sensi del Regolamento UE 2016/679 (GDPR), l'interessato ha diritto di:</p>
+    <ul>
+      <li>Accedere ai propri dati personali</li>
+      <li>Richiedere la rettifica o la cancellazione dei dati</li>
+      <li>Opporsi al trattamento o richiederne la limitazione</li>
+      <li>Richiedere la portabilita dei dati</li>
+      <li>Revocare il consenso in qualsiasi momento</li>
+      <li>Proporre reclamo all'Autorita Garante per la Protezione dei Dati Personali</li>
+    </ul>
+
+    <h3>9. Sicurezza</h3>
+    <p>Adottiamo misure tecniche e organizzative appropriate per proteggere i dati personali da accessi non autorizzati, perdita, distruzione o alterazione. Il sito utilizza il protocollo HTTPS per la trasmissione sicura dei dati.</p>
+
+    <h3>10. Modifiche alla privacy policy</h3>
+    <p>Ci riserviamo il diritto di aggiornare la presente informativa in qualsiasi momento. La data dell'ultimo aggiornamento e indicata in cima al documento. Invitiamo gli utenti a consultare periodicamente questa pagina.</p>
+
+    <p style="margin-top:2rem;padding-top:1rem;border-top:1px solid var(--borderL);font-size:.75rem;color:var(--text3)">Per esercitare i propri diritti o per qualsiasi domanda relativa al trattamento dei dati personali, scrivere a: info@dimorarosa.it</p>
+  </div>
+</div>
+
+<!-- COOKIE BANNER -->
+<div class="ck-ban" id="ckb">
+  <p>Questo sito utilizza esclusivamente cookie tecnici per il funzionamento. Nessun dato viene condiviso con terze parti. <a onclick="event.preventDefault();document.getElementById('privacyModal').classList.add('open');document.getElementById('ckb').style.display='none'">Privacy Policy</a></p>
+  <div class="ck-btns"><button class="ck-n" onclick="this.closest('.ck-ban').style.display='none'">Rifiuta</button><button class="ck-y" onclick="this.closest('.ck-ban').style.display='none'">Accetta</button></div>
+</div>
+
+<script>
+// Nav toggle
+document.getElementById('nT').addEventListener('click',function(){document.getElementById('mn').classList.toggle('open')});
+document.querySelectorAll('.mob-nav a').forEach(function(a){a.addEventListener('click',function(){document.getElementById('mn').classList.remove('open')})});
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();var t=document.querySelector(this.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'})})});
+
+// Purchase banner
+var pb=document.getElementById('pb');
+var mbb=document.getElementById('mbb');
+var dis=false;
+window.addEventListener('scroll',function(){
+  var s=window.scrollY>600;
+  if(!dis)pb.classList.toggle('show',s);
+  mbb.classList.toggle('show',s);
+});
+document.getElementById('pbX').addEventListener('click',function(){pb.classList.remove('show');dis=true});
+
+// Cookie banner
+setTimeout(function(){var c=document.getElementById('ckb');if(c)c.classList.add('show')},2000);
+
+// Close privacy modal on overlay click
+document.getElementById('privacyModal').addEventListener('click',function(e){if(e.target===this)this.classList.remove('open')});
+</script>
+</body>
+</html>
